@@ -50,7 +50,8 @@ Loads <- LinkrealTimeloads::Example(output_folder)
 
 LinkrealTimeloads::Example() returns and writes a list to
 output_folder/site/Loads.rds and can be used to generate a plot like the
-one below:
+one below. Note that plot below is from synthetic data used in the
+package realTimeloads.
 
 <figure>
 <img src="man/figures/README-example-1.png"
