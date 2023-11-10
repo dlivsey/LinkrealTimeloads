@@ -50,15 +50,17 @@ Loads <- LinkrealTimeloads::Example(output_folder)
 
 LinkrealTimeloads::Example() returns and writes a list to
 output_folder/site/Loads.rds and can be used to generate a plot like the
-one below. Note that plot below is from synthetic data used in the
-package realTimeloads.
+one below. Note that the plot below is from synthetic data used in the
+package realTimeloads. Timeseries of “Actual load” would not be
+available for field observations unless TSS and discharge was measured
+continuously.
 
 <figure>
 <img src="man/figures/README-example-1.png"
-alt="Suspended-sediment load estimated from the estimates of TSS and discharge estimated from ADCP measurments collected at 10-minute intervals" />
+alt="Suspended-sediment load estimated from estimates of TSS and discharge estimated from ADCP measurments collected at 10-minute intervals" />
 <figcaption aria-hidden="true">Suspended-sediment load estimated from
-the estimates of TSS and discharge estimated from ADCP measurments
-collected at 10-minute intervals</figcaption>
+estimates of TSS and discharge estimated from ADCP measurments collected
+at 10-minute intervals</figcaption>
 </figure>
 
 ## References
