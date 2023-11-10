@@ -46,7 +46,7 @@ See vignette('LinkrealTimeloads') for further instructions
 \donttest{
 # Writes to user's R library, e.g., /R/library/../LinkrealTimeloads/extdata/Example
 user_data_folder <- paste0(system.file("extdata", package = "LinkrealTimeloads"),'/Example')
-Output <- Example()
+Output <- Example(user_data_folder)
 }
 }
 \references{

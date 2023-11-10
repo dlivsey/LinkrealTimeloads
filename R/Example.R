@@ -32,10 +32,10 @@
 #' @return List with suspended-sediment load estimates at Johnstone River at Innisfail saved to user_data_folder/site/Loads.rds
 #' @author Daniel Livsey (2023) ORCID: 0000-0002-2028-6128
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Writes to user's R library, e.g., /R/library/../LinkrealTimeloads/extdata/Example
 #' user_data_folder <- paste0(system.file("extdata", package = "LinkrealTimeloads"),'/Example')
-#' Output <- Example()
+#' Output <- Example(user_data_folder)
 #' }
 #' @references Stephen Wallace (2023, DES) provided crucial functions in
 #' Import_Channelmaster_Data() to extract data from binary 000 files.

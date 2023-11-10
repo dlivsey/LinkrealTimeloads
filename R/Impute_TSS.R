@@ -186,7 +186,7 @@ for (k in 1:number_of_sites) {
     # ytrain <- ylog
     # ytrain[ival] <- NA
     # # train validation model
-    # mod <- forecast::auto.arima(ytrain,stepwise=FALSE,approximation=FALSE,num.cores=1,parallel=TRUE)$model
+    # mod <- forecast auto.arima(ytrain,stepwise=FALSE,approximation=FALSE,num.cores=1,parallel=TRUE)$model
     # # get validation data
     # kal <- stats::KalmanSmooth(ytrain, mod, nit = -1)
     # erg <- kal$smooth
@@ -215,7 +215,7 @@ for (k in 1:number_of_sites) {
     # summary(lm(validation_predictions~validation_data,df))
 
     # for final model impute using all data
-    # Note imputeTS::na_kalman() uses forecast::auto.arima()
+    # Note imputeTS::na_kalman() uses forecast auto.arima()
 
     ### After trying various models decided to Fit TSS using tidal model ----
 
