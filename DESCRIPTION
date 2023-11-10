@@ -1,0 +1,30 @@
+Package: LinkrealTimeloads
+Title: Code to process data from DES WQI GBRCLMP using the R package "realTimeloads"
+Version: 1.0.0
+Authors@R: 
+    person(given = "Daniel",
+           family = "Livsey",
+           role = c("aut", "cre","cph"),
+           email = "livsey.daniel@gmail.com",
+           comment = c(ORCID = "0000-0002-2028-6128"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    data.table,
+    graphics,
+    imputeTS,
+    mice,
+    dplyr,
+    realTimeloads,
+    signal,
+    stats,
+    TideHarmonics,
+    utils,
+    magrittr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
