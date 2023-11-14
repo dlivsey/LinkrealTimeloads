@@ -37,7 +37,7 @@
 #' @section Warning:
 #' Link_to_Real_time_loads() must be run prior to this function
 #'
-#' @return List with discharge, TSS, and loads for reporting and plotting
+#' @return List with discharge, TSS, and loads for reporting and plotting.
 #'
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #'

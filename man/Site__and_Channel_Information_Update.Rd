@@ -10,7 +10,7 @@ Site__and_Channel_Information_Update(user_data_folder)
 \item{user_data_folder}{file path to user data folder}
 }
 \value{
-Metadata updated to *xs.RDS files
+Metadata updated to *xs.RDS files in site/Channel_Geometry
 \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 }
 \description{

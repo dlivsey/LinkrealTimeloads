@@ -28,7 +28,7 @@ Impute_height_discharge_velocity_and_conductivity(
 \item{MC}{number of Monte Carlo simulations used in uncertainty estimation in realTimeloads::impute_data}
 }
 \value{
-Imputed data in rds files *_Imputed.rds
+Imputed data in rds files *_Imputed.rds written to site/Sonde_and_Height_data and site/Discharge_data
 }
 \description{
 Code will impute data if days since last imputation threshold since "to_time" is reached

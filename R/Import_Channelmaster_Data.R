@@ -1,6 +1,6 @@
-#' Imports data from binary RDI 000 files using code from Stephen Wallace and moves variables to format expected in the package realTimeloads
+#' Imports data from binary RDI 000 files using code from Stephen Wallace and moves variables to format expected in the realTimeloads package
 #'
-#' Imports data from binary RDI 000 files when new files are added OR when 000 file size changes. Stephen Wallace provided all functions that extract data from 000 files. This function we needed to assign variable names expected in realTimeloads.
+#' Imports data from binary RDI 000 files when new files are added OR when 000 file size changes. Stephen Wallace provided all functions that extract data from 000 files. This function is needed to assign variable names expected in realTimeloads.
 #'
 #' @param user_data_folder file path to user data folder
 #' @param site site folder under user_data_folder
@@ -31,7 +31,7 @@
 #'
 #' See vignette('LinkrealTimeloads') for further instructions
 #'
-#' @return  A rds file for each 000 file and All_ADCP_Programming_Data.rds
+#' @return  A rds file for each 000 file and All_ADCP_Programming_Data.rds written to site/ADCP_data
 #' @seealso
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #'

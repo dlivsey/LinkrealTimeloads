@@ -2,7 +2,7 @@
 % Please edit documentation in R/Link_to_Real_time_loads.R
 \name{Link_to_Real_time_loads}
 \alias{Link_to_Real_time_loads}
-\title{Import and process data in specified folder structure using realTimeloads package}
+\title{Import and process data in specified folder structure using realTimeloads package. If site is set to NULL code will process data for all site folders under user_data_folder}
 \usage{
 Link_to_Real_time_loads(user_data_folder, site = NULL, overwrite = FALSE)
 }
@@ -14,10 +14,10 @@ Link_to_Real_time_loads(user_data_folder, site = NULL, overwrite = FALSE)
 \item{overwrite}{logical to overwrite all previous outputs}
 }
 \value{
-Processed data in subfolders of user_data_folder
+Processed data in subfolders of user_data_folder/site. See help files of each function below to determine specfic output file location in user_data_folder/site.
 }
 \description{
-Imports, processes, and imputes data in user_data_folder folders (see note below). Calling this function periodically will check for changes to 000 file size and will appended new data as needed. After running this function use Compute_load() (see link below)
+Imports, processes, and imputes data in user_data_folder folders (see note below). Calling this function periodically will check for changes to 000 file size and will appended new data as needed. If site is set to NULL code will process data for all site folders under user_data_folder. After running this function use Compute_load() (see link below)
 }
 \note{
 All functions expect data to be in following folders:

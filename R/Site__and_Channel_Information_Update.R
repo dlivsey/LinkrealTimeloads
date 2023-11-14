@@ -36,7 +36,7 @@
 #'
 #' Site_list_update() and Site__and_Channel_Information_Update() must be manually updated when adding new sites
 #'
-#' @return Metadata updated to *xs.RDS files
+#' @return Metadata updated to *xs.RDS files in site/Channel_Geometry
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #' @author Daniel Livsey (2023) ORCID: 0000-0002-2028-6128
 #' @examples

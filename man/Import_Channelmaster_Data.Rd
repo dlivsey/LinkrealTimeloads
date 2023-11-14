@@ -2,7 +2,7 @@
 % Please edit documentation in R/Import_Channelmaster_Data.R
 \name{Import_Channelmaster_Data}
 \alias{Import_Channelmaster_Data}
-\title{Imports data from binary RDI 000 files using code from Stephen Wallace and moves variables to format expected in the package realTimeloads}
+\title{Imports data from binary RDI 000 files using code from Stephen Wallace and moves variables to format expected in the realTimeloads package}
 \usage{
 Import_Channelmaster_Data(user_data_folder, site = NULL, overwrite = FALSE)
 }
@@ -14,10 +14,10 @@ Import_Channelmaster_Data(user_data_folder, site = NULL, overwrite = FALSE)
 \item{overwrite}{overwrite all previously imported data}
 }
 \value{
-A rds file for each 000 file and All_ADCP_Programming_Data.rds
+A rds file for each 000 file and All_ADCP_Programming_Data.rds written to site/ADCP_data
 }
 \description{
-Imports data from binary RDI 000 files when new files are added OR when 000 file size changes. Stephen Wallace provided all functions that extract data from 000 files. This function we needed to assign variable names expected in realTimeloads.
+Imports data from binary RDI 000 files when new files are added OR when 000 file size changes. Stephen Wallace provided all functions that extract data from 000 files. This function is needed to assign variable names expected in realTimeloads.
 }
 \note{
 All functions expect data to be in following folders:

@@ -1,6 +1,6 @@
 #' Predict TSS from processed acoustic backscatter and turbidity using Livsey et al (2023)
 #'
-#' Code expects outputs from Link_to_Real_time_loads. Conducts regression of TSS(backscatter,turbidity) using realTimeloads package code.
+#' Code expects outputs from Link_to_Real_time_loads. Conducts regression of Kt(SCI,period) to predict TSS from acoustic backscatter using realTimeloads package code.
 #'
 #' @param user_data_folder file path to user data folder
 #' @param site site folder under user_data_folder
@@ -42,7 +42,7 @@
 #' For load uncertainty calculations one must store 2000 Monte Carlo simulations per
 #' time step (see realTimeloads documentation and references therein)
 #'
-#' @return TSS_in_mg_per_liter_estimated_from_SCI in rds files
+#' @return TSS in mg/l from Kt(SCI). Output written to site/Analyte_data/TSS_estimated_from_SCI_with_metadata.rds
 #' @seealso
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #'

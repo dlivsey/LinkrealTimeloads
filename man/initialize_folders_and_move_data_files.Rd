@@ -21,7 +21,7 @@ initialize_folders_and_move_data_files(
 \item{Site_Name}{site name for plotting purposes}
 }
 \value{
-Writes folders listed in note under user_data_folder, and updates Site_List.rds and Site_Number if provided
+Writes folders listed in note under user_data_folder, updates Site_List.rds, and copies files from LinkrealTimeloads/extdata to user_data_folder/site
 }
 \description{
 Initialize folder and copies data on example data provided in package. Allows user to follow package workflow in setting up a new site directory.

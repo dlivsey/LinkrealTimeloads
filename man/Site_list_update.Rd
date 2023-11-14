@@ -21,7 +21,7 @@ Site_list_update(
 \item{Site_Name}{name of site (string)}
 }
 \value{
-user_data_folder/Site_List.rds, links site folder to site number and name
+Output written to user_data_folder/Site_List.rds, links site folder to site number and name
 }
 \description{
 Site_Folder, Site_Number, and Site_Name must be manually updated as needed

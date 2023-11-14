@@ -41,7 +41,7 @@
 #' Folder structure can be initialized for new site using
 #' \code{\link{initialize_new_site_directories}}
 #'
-#' @return user_data_folder/Site_List.rds, links site folder to site number and name
+#' @return Output written to user_data_folder/Site_List.rds, links site folder to site number and name
 #'
 #' @seealso
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package

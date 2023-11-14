@@ -30,7 +30,7 @@
 #'
 #' See vignette('LinkrealTimeloads') for further instructions
 #'
-#' @return ADCP_Setting_Summary_Table.rds, file used for processing in Predict_TSS_from_SCI.R
+#' @return ADCP setting summary table used for processing in Predict_TSS_from_SCI.R. Output written to site/ADCP_data/Processed_Backscatter_data.rds
 #' @seealso
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #'

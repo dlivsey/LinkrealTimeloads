@@ -24,7 +24,7 @@ Compute_load(
 \item{compute_uncertainty}{logical to estimate uncertainty in load estimate}
 }
 \value{
-List with discharge, TSS, and loads for reporting and plotting
+List with discharge, TSS, and loads for reporting and plotting.
 
 \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 }

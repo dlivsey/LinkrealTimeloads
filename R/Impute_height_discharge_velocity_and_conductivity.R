@@ -36,7 +36,7 @@
 #'
 #' @section Warning:
 #' Users should ensure imputation is reasonable and adjust predictors as needed.
-#' @return Imputed data in rds files *_Imputed.rds
+#' @return Imputed data in rds files *_Imputed.rds written to site/Sonde_and_Height_data and site/Discharge_data
 #'
 #' @seealso
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package

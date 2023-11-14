@@ -1,4 +1,4 @@
-#' Process acoustic backscatter per Livsey (in review) and references therein
+#' Process acoustic backscatter and save to ADCP (i.e., 000) rds file
 #'
 #' Process acoustic backscatter using realTimeloads with methods detailed in Livsey (in review)
 #'
@@ -35,7 +35,8 @@
 #' @section Warning:
 #' Import_Channelmaster_Data() should be run first
 #'
-#' @return Site_List in rds format to match site folder to site number and name
+#' @return Saves processed acoustic backscatter to each 000-related rds file in site/ADCP_data
+#'
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #' \code{\link{Import_Channelmaster_Data}} Imports ADCP data from 000 files
 #' @author Daniel Livsey (2023) ORCID: 0000-0002-2028-6128
@@ -124,7 +125,7 @@ for (i in 1:length(files)) {
 
 msg <- 'Process_Backscatter.R complete'
 
-return(msg)
+return(invisible(msg))
 
 } # end of function
 

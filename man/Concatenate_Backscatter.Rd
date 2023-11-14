@@ -12,12 +12,10 @@ Concatenate_Backscatter(user_data_folder, site = NULL)
 \item{site}{site folder under user_data_folder}
 }
 \value{
-Processed_Backscatter_data concatenated from all rds file
-\code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
-\code{\link{Process_Backscatter}} Process acoustic backscatter data
+Processed_Backscatter_data concatenated from all 000 rds files. Output written to site/ADCP_data/Processed_Backscatter_data.rds
 }
 \description{
-Concatenates processed acoustic backscatter data from Process_Backscatter for subsequent analysis in Predict_TSS_from_SCI()
+Concatenates processed acoustic backscatter data from Process_Backscatter() for subsequent analysis in Predict_TSS_from_SCI()
 }
 \note{
 All functions expect data to be in following folders:
@@ -56,9 +54,14 @@ Process_Backscatter() should be run prior to this function
 \references{
 Stephen Wallace (2023, DES) provided crucial functions in Import_Channelmaster_Data() to extract data from binary 000 files.
 
-Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of Concentration and Discharge_. R package version 1.0.0.
+Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of Concentration and Discharge. R package version 1.0.0.
 
 Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
+}
+\seealso{
+\code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
+
+\code{\link{Process_Backscatter}} Process acoustic backscatter data
 }
 \author{
 Daniel Livsey (2023) ORCID: 0000-0002-2028-6128

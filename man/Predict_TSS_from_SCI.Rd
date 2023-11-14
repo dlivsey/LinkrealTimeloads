@@ -21,10 +21,10 @@ Predict_TSS_from_SCI(
 \item{retain_data_for_load_uncertainty}{logical to keep estimates of Kt for later load uncertainty calculations}
 }
 \value{
-TSS_in_mg_per_liter_estimated_from_SCI in rds files
+TSS in mg/l from Kt(SCI). Output written to site/Analyte_data/TSS_estimated_from_SCI_with_metadata.rds
 }
 \description{
-Code expects outputs from Link_to_Real_time_loads. Conducts regression of TSS(backscatter,turbidity) using realTimeloads package code.
+Code expects outputs from Link_to_Real_time_loads. Conducts regression of Kt(SCI,period) to predict TSS from acoustic backscatter using realTimeloads package code.
 }
 \note{
 When retain_data_for_load_uncertainty = TRUE, exported rds file can be very large

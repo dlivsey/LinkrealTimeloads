@@ -2,7 +2,7 @@
 % Please edit documentation in R/Process_Backscatter.R
 \name{Process_Backscatter}
 \alias{Process_Backscatter}
-\title{Process acoustic backscatter per Livsey (in review) and references therein}
+\title{Process acoustic backscatter and save to ADCP (i.e., 000) rds file}
 \usage{
 Process_Backscatter(user_data_folder, site = NULL, overwrite = FALSE)
 }
@@ -14,7 +14,8 @@ Process_Backscatter(user_data_folder, site = NULL, overwrite = FALSE)
 \item{overwrite}{overwrite previous outputs}
 }
 \value{
-Site_List in rds format to match site folder to site number and name
+Saves processed acoustic backscatter to each 000-related rds file in site/ADCP_data
+
 \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 \code{\link{Import_Channelmaster_Data}} Imports ADCP data from 000 files
 }

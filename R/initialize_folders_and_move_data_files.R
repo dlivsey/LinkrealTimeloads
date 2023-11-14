@@ -33,7 +33,7 @@
 #'
 #' See vignette('LinkrealTimeloads') for further instructions
 #'
-#' @return Writes folders listed in note under user_data_folder, and updates Site_List.rds and Site_Number if provided
+#' @return Writes folders listed in note under user_data_folder, updates Site_List.rds, and copies files from LinkrealTimeloads/extdata to user_data_folder/site
 #' @seealso
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #'
