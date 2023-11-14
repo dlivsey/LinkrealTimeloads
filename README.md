@@ -25,7 +25,7 @@ You can install the development version of LinkrealTimeloads from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("dlivsey/LinkrealTimeloads")
+devtools::install_github("dlivsey/LinkrealTimeloads", build_vignettes = TRUE)
 ```
 
 ## Example
