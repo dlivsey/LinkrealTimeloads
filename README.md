@@ -52,7 +52,7 @@ LinkrealTimeloads::Example() returns and writes a list to
 output_folder/site/Loads.rds and can be used to generate a plot like the
 one below. Note that the plot below is from synthetic data used in the
 package realTimeloads. Timeseries of “Actual load” would not be
-available for field observations unless TSS and discharge was measured
+available for field observations unless TSS and discharge were measured
 continuously.
 
 <figure>
