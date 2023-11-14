@@ -96,9 +96,6 @@ Uncertainty on loads can be estimated by setting "compute_uncertainty" to TRUE i
 
 Output <- LinkrealTimeloads::Compute_load(user_data_folder,site)
 
-# Save list with discharge, TSS, and loads for reporting and plotting 
-save(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.rds'))
-
 # Total load in kt is provided in: 
 Output$Total_load_kt
 
@@ -106,7 +103,7 @@ path <- paste0(gsub('/vignettes','',getwd()),'/man/figures/README-example-1.png'
 
 ```
 
-Data in the list "Output" can be used to generate a plot like the one below. Note that the plot below is from synthetic data used in the package realTimeloads. Timeseries of "Actual load" would not be available for field observations unless TSS and discharge was measured continuously.  
+Data in the list "Output" can be used to generate a plot like the one below. Note that the plot below is from synthetic data used in the package realTimeloads. Timeseries of "Actual load" would not be available for field observations unless TSS and discharge were measured continuously.  
 
 ![Suspended-sediment load estimated from estimates of TSS and discharge estimated from ADCP measurments collected at 10-minute intervals](README-example-1.png){width="80%"}
 
@@ -172,3 +169,8 @@ knitr::kable(Regression_data_example,caption='Subset of regression data used to 
 
 ```
 
+## References
+
+Livsey, D. N., Turner, R. D. R., & Grace, P. R. (2023). Combining Optical and Acoustic Backscatter Measurements for Monitoring of Fine Suspended‐Sediment Concentration Under Changes in Particle Size and Density. Water Resources Research, 59(8), e2022WR033982.
+
+Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
