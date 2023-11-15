@@ -62,7 +62,7 @@ LinkrealTimeloads::Link_to_Real_time_loads(user_data_folder,site)
 Output <- LinkrealTimeloads::Compute_load(user_data_folder,site)
 
 # Save list with discharge, TSS, and loads for reporting and plotting
-save(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.rds'))
+saveRDS(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.rds'))
 
 return(Output)
 
