@@ -1,6 +1,6 @@
 #' Writes rds file with Site_Folder, Site_Number, and Site_Name
 #'
-#' Site_Folder, Site_Number, and Site_Name must be manually updated as needed
+#' Site_Folder, Site_Number, and Site_Name must be manually updated as needed. Site_Folder, Site_Number, and Site_Name for 10 WQI ADCP sites are provided as default.
 #'
 #' @param user_data_folder file path to user data folder (string)
 #' @param Site_Folder name of folder under user_data_folder (string)
@@ -63,20 +63,26 @@ Site_list_update <- function(user_data_folder,Site_Folder = NULL,Site_Number = N
 
 ndir <- length(list.dirs(user_data_folder, recursive = FALSE))
 
+# Current site folders, numbers, and names for ADCP WQI sites
+Current_Site_Folders <- c("BCS","DRL","JRI","MRB","MRD","ORC","PCS","PRG","RRE","SCS")
+Current_Site_Numbers <- c("1200125","1080025","1120053","1140041","1110056","1240062","1260122","122013A","1111019","1260117")
+Current_Site_Names <-c("Bonnie Doon Creek at Strathalbyn","Daintree River at Lower Daintree","Johnstone River at Innisfail","Murray River at Bilyana","Mulgrave River at Deeral","O'Connell River at Caravan Park","Plane Creek at Sucrogen Weir","Proserpine River at Glen Isla","Russell River at East Russell","Sandy Creek South Branch at Downstream Sorbellos Road")
+
 # default site list if no user data provided
 if (is.null(Site_Folder)) {
-Site_Folder <- c("MRD","JRI")
-Site_Number <- c("1110056","1120053")
-Site_Name <- c("Mullgrave River at Deeral","Johnstone River at Innisfail")
+Site_Folder <- Current_Site_Folders
+Site_Number <- Current_Site_Numbers
+Site_Name <- Current_Site_Names
 Site_List = data.frame(Site_Folder,Site_Number,Site_Name)
 }
 
 # allow user to add sites if desired
 if (!is.null(Site_Folder)) {
-  Site_Folder <- c("MRD","JRI",Site_Folder)
-  Site_Number <- c("1110056","1120053",Site_Number)
-  Site_Name <- c("Mullgrave River at Deeral","Johnstone River at Innisfail",Site_Name)
+  Site_Folder <- c(Current_Site_Folders,Site_Folder)
+  Site_Number <- c(Current_Site_Numbers,Site_Number)
+  Site_Name <- c(Current_Site_Names,Site_Name)
   Site_List = data.frame(Site_Folder,Site_Number,Site_Name)
+  Site_List <- unique(Site_List) # ensure no duplicate rows
 }
 
 file <- paste0(user_data_folder,"/Site_List.rds")

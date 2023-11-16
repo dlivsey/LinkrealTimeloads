@@ -1,6 +1,6 @@
 #' Writes directories expected by LinkrealTimeloads and updates Site_List
 #'
-#' Writes folders listed in note below and will update Site_List.rds if Site_Number is provided
+#' Writes folders listed in note below and will update Site_List.rds if Site_Number is provided. If site = NULL function will write folders for all WQI ADCP monitoring sites as of 2023 (i.e., 10 sites in total)
 #'
 #' @param user_data_folder file path to user data folder
 #' @param site site folder under user_data_folder
@@ -33,7 +33,7 @@
 #'
 #' See vignette('LinkrealTimeloads') for further instructions
 #'
-#' @return Writes folders listed in note below and will update Site_List.rds if Site_Number is provided
+#' @return Writes folders listed in note and will update Site_List.rds if Site_Number is provided.
 #' @seealso
 #' \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package
 #'
@@ -48,11 +48,11 @@
 #' Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
 #'
 #' @export
-initialize_new_site_directories <- function(user_data_folder,site,Site_Number = NULL,Site_Name=NULL) {
+initialize_new_site_directories <- function(user_data_folder,site = NULL,Site_Number = NULL,Site_Name=NULL) {
 #site <- 'MRD'
 #user_data_folder <- "C:/Users/livseyd/OneDrive - Queensland University of Technology/Documents/R/LoadDashboard/user_data_test"
 
-
+if (!is.null(site)) {
 
 site_folder <- paste0(paste0(user_data_folder,'/'),site)
 ADCP <- paste0(paste0(user_data_folder,'/'),paste0(site,'/ADCP_data'))
@@ -76,6 +76,41 @@ ifelse(!dir.exists(Sonde_and_Height), dir.create(Sonde_and_Height), "site/ADCP_d
 if (!is.null(Site_Number)) {
 Site_list_update(user_data_folder,Site_Folder = site,Site_Number,Site_Name)
 }
+}
+
+# if site is NUll assume one wants to write directories for all existing ADCP sites as of 2023
+if (is.null(site)) {
+# Current site folders, numbers, and names for ADCP WQI sites
+Current_Site_Folders <- c("BCS","DRL","JRI","MRB","MRD","ORC","PCS","PRG","RRE","SCS")
+Current_Site_Numbers <- c("1200125","1080025","1120053","1140041","1110056","1240062","1260122","122013A","1111019","1260117")
+Current_Site_Names <-c("Bonnie Doon Creek at Strathalbyn","Daintree River at Lower Daintree","Johnstone River at Innisfail","Murray River at Bilyana","Mulgrave River at Deeral","O'Connell River at Caravan Park","Plane Creek at Sucrogen Weir","Proserpine River at Glen Isla","Russell River at East Russell","Sandy Creek South Branch at Downstream Sorbellos Road")
+
+for (i in 1:length(Current_Site_Folders)) {
+
+    site <- Current_Site_Folders[i]
+
+    site_folder <- paste0(paste0(user_data_folder,'/'),site)
+    ADCP <- paste0(paste0(user_data_folder,'/'),paste0(site,'/ADCP_data'))
+    Analyte <- paste0(paste0(user_data_folder,'/'),paste0(site,'/Analyte_data'))
+    Channel <- paste0(paste0(user_data_folder,'/'),paste0(site,'/Channel_Geometry'))
+    Discharge <- paste0(paste0(user_data_folder,'/'),paste0(site,'/Discharge_data'))
+    Offsets <-  paste0(paste0(user_data_folder,'/'),paste0(site,'/Height_Offsets'))
+    Sonde_and_Height <-  paste0(paste0(user_data_folder,'/'),paste0(site,'/Sonde_and_Height_data'))
+
+    # write directories only if not present
+    ifelse(!dir.exists(user_data_folder), dir.create(user_data_folder), "user_data_folder exists already")
+    ifelse(!dir.exists(site_folder), dir.create(site_folder), "user_data_folder/site exists already")
+    ifelse(!dir.exists(ADCP), dir.create(ADCP), "site/ADCP_data exists already")
+    ifelse(!dir.exists(Analyte), dir.create(Analyte), "site/Analyte_data exists already")
+    ifelse(!dir.exists(Channel), dir.create(Channel), "site/Channel_Geometry exists already")
+    ifelse(!dir.exists(Discharge), dir.create(Discharge), "site/Discharge_data exists already")
+    ifelse(!dir.exists(Offsets), dir.create(Offsets), "site/Height_Offsets exists already")
+    ifelse(!dir.exists(Sonde_and_Height), dir.create(Sonde_and_Height), "site/ADCP_data exists already")
+
+}
+
+  }
+
 
 return(invisible(NULL))
 

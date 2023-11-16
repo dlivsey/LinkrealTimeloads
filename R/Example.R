@@ -1,6 +1,6 @@
-#' Executes code provided in vignette('LinkrealTimeloads')
+#' Executes code provided in vignette('LinkrealTimeloads') and writes QAQC report in html format.
 #'
-#' Writes folders and files using code in vignette('LinkrealTimeloads') to folder path specified by user_data_folder. Uses example data files provided package folder LinkrealTimeloads/extdata
+#' Writes folders and files using code in vignette('LinkrealTimeloads') to folder path specified by user_data_folder. Uses example data files provided package folder LinkrealTimeloads/extdata. The QAQC report in html format provides interactive and shareable plots
 #'
 #' @param user_data_folder file path to user data folder
 #' @note All functions expect data to be in following folders:
@@ -33,8 +33,8 @@
 #' @author Daniel Livsey (2023) ORCID: 0000-0002-2028-6128
 #' @examples
 #' \dontrun{
-#' # Writes to user's R library, e.g., /R/library/../LinkrealTimeloads/extdata/Example
-#' user_data_folder <- paste0(system.file("extdata", package = "LinkrealTimeloads"),'/Example')
+#' # Writes to user's Desktop
+#' user_data_folder <- paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkreaTimeloads_Output')
 #' Output <- Example(user_data_folder)
 #' }
 #' @references Stephen Wallace (2023, DES) provided crucial functions in
@@ -50,7 +50,7 @@
 #' @export
 Example <- function(user_data_folder) {
 
-# Acronym for "Johnstone River at Innisfail"
+# Folder name and acronym for "Johnstone River at Innisfail"
 site <- 'JRI'
 
 # Write folders to user_data_folder/site using initialize_new_site_directories() and copy files to appropriate folders
@@ -59,10 +59,24 @@ LinkrealTimeloads::initialize_folders_and_move_data_files(user_data_folder,site)
 # Call Link_to_Real_time_loads() to run package functions in appropriate order.
 LinkrealTimeloads::Link_to_Real_time_loads(user_data_folder,site)
 
+# Compute loads
 Output <- LinkrealTimeloads::Compute_load(user_data_folder,site)
 
 # Save list with discharge, TSS, and loads for reporting and plotting
 saveRDS(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.rds'))
+
+# Write QAQC report
+author <- 'Daniel Livsey'
+site_name <- 'Johnstone River at Innisfail'
+# set times to NULL to plot all available data
+#compute_from_time <- NULL
+#compute_to_time <- NULL
+compute_from_time <- "2023-04-01 00:00:00 AEST"
+compute_to_time <- "2023-06-01 00:00:00 AEST"
+max_points <- 30
+
+QAQC_Report(author,user_data_folder,site,site_name,compute_from_time,compute_to_time,max_points)
+
 
 return(Output)
 

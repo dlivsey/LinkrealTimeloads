@@ -24,7 +24,7 @@ Site_list_update(
 Output written to user_data_folder/Site_List.rds, links site folder to site number and name
 }
 \description{
-Site_Folder, Site_Number, and Site_Name must be manually updated as needed
+Site_Folder, Site_Number, and Site_Name must be manually updated as needed. Site_Folder, Site_Number, and Site_Name for 10 WQI ADCP sites are provided as default.
 }
 \note{
 All functions expect data to be in following folders:

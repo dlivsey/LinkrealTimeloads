@@ -6,7 +6,7 @@
 \usage{
 initialize_new_site_directories(
   user_data_folder,
-  site,
+  site = NULL,
   Site_Number = NULL,
   Site_Name = NULL
 )
@@ -21,10 +21,10 @@ initialize_new_site_directories(
 \item{Site_Name}{site name for plotting purposes}
 }
 \value{
-Writes folders listed in note below and will update Site_List.rds if Site_Number is provided
+Writes folders listed in note and will update Site_List.rds if Site_Number is provided.
 }
 \description{
-Writes folders listed in note below and will update Site_List.rds if Site_Number is provided
+Writes folders listed in note below and will update Site_List.rds if Site_Number is provided. If site = NULL function will write folders for all WQI ADCP monitoring sites as of 2023 (i.e., 10 sites in total)
 }
 \note{
 All functions expect data to be in following folders:
