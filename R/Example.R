@@ -37,11 +37,13 @@
 #' user_data_folder <- paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkreaTimeloads_Output')
 #' Output <- Example(user_data_folder)
 #' }
-#' @references Stephen Wallace (2023, DES) provided crucial functions in
+#' @references
+#'
+#' Stephen Wallace (2023, DES) provided crucial functions in
 #' Import_Channelmaster_Data() to extract data from binary 000 files.
 #'
 #' Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of
-#' Concentration and Discharge_. R package version 1.0.0.
+#' Concentration and Discharge. R package version 1.0.0.
 #'
 #' Livsey, D.N. (in review). National Industry Guidelines for hydrometric
 #' monitoring–Part 12: Application of acoustic Doppler velocity meters to

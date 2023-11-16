@@ -51,7 +51,7 @@
 #' @export
 Import_EAGLE_IO_csv_data <- function(user_data_folder,site = NULL) {
 # user_data_folder: file path to folder containing all site folders
-# site: specific site folder name (e.g., "MRD" for Mullgrave River at Deeral)
+# site: specific site folder name (e.g., "MRD" for Mulgrave River at Deeral)
 # Imports TSS data, datum offsets, and timeseries of height and sonde data from Eagle IO
 # reads in data and updates new data to rds file if present
 # imports analyte, height-offsets, sonde, and height data
@@ -68,7 +68,7 @@ return(msg)
 # Read-in TSS data
 Import_eagle_io_analyte_data_csv <- function(user_data_folder,site = NULL) {
   # user_data_folder: file path to folder containing all site folders
-  # site: specific site folder name (e.g., "MRD" for Mullgrave River at Deeral)
+  # site: specific site folder name (e.g., "MRD" for Mulgrave River at Deeral)
   # reads in data and updates new data to rds file if present
   # Daniel Livsey, 2023
 
@@ -152,7 +152,7 @@ Import_eagle_io_analyte_data_csv <- function(user_data_folder,site = NULL) {
 # Read-in ADCP, Intake, and Cap Level (i.e, capillary line level used for height) datum offsets
 Import_eagle_io_height_offset_data_csv <- function(user_data_folder,site = NULL) {
   # user_data_folder: file path to folder containing all site folders
-  # site: specific site folder name (e.g., "MRD" for Mullgrave River at Deeral)
+  # site: specific site folder name (e.g., "MRD" for Mulgrave River at Deeral)
   # reads in data and updates new data to rds file if present
   # Daniel Livsey, 2023
 
@@ -244,7 +244,7 @@ Import_eagle_io_height_offset_data_csv <- function(user_data_folder,site = NULL)
 # Read-in height and sonde timeseries
 Import_eagle_io_timeseries_csv <- function(user_data_folder,site = NULL) {
   # user_data_folder: file path to folder containing all site folders
-  # site: specific site folder name (e.g., "MRD" for Mullgrave River at Deeral)
+  # site: specific site folder name (e.g., "MRD" for Mulgrave River at Deeral)
   # reads in data and updates new data to rds file if present
   # Daniel Livsey, 2023
 

@@ -230,6 +230,16 @@ p4
 
 ```
 
+## References
 
+Stephen Wallace (2023) provided crucial functions in Import_Channelmaster_Data() to extract data from binary 000 files
+
+Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of Concentration and Discharge. R package version 1.0.0. CRAN
+
+Livsey D.N. (2023) LinkrealTimeloads: Tools to compute suspended-sediment load from DES WQI GBRCLMP ADCP data using the R package "realTimeloads". Github only
+  
+Livsey, D. N., Turner, R. D. R., & Grace, P. R. (2023). Combining Optical and Acoustic Backscatter Measurements for Monitoring of Fine Suspended‐Sediment Concentration Under Changes in Particle Size and Density. Water Resources Research, 59(8), e2022WR033982.
+
+Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
 
 
