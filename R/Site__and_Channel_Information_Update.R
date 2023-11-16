@@ -57,7 +57,7 @@ Site__and_Channel_Information_Update <- function(user_data_folder) {
 ### MRD "Mullgrave at Deeral" --------------
 file <- paste0(user_data_folder,"/MRD/Channel_Geometry/mrdxs.RDS")
 file2 <- paste0(user_data_folder,"/MRD/Height_Offsets/Height_Offsets.RDS")
-if (file.exists(file)) {
+if (file.exists(file) & file.exists(file2)) {
 z<- readRDS(file)
 z2 <- readRDS(file2)
 # Adding ADCP location data frame
@@ -99,7 +99,7 @@ saveRDS(z,file)
 ### JRI "Johnstone at Innisfail" --------------
 file <- paste0(user_data_folder,"/JRI/Channel_Geometry/jrixs.RDS")
 file2 <- paste0(user_data_folder,"/JRI/Height_Offsets/Height_Offsets.RDS")
-if (file.exists(file)) {
+if (file.exists(file) & file.exists(file2)) {
 z<- readRDS(file)
 z2 <- readRDS(file2)
 # Adding ADCP location data frame
