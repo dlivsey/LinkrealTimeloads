@@ -54,6 +54,12 @@ package realTimeloads. Timeseries of “Actual load” would not be
 available for field observations unless TSS and discharge were measured
 continuously.
 
+The below plot is embedded to reduce package installation run-time.
+Users are encouraged to run the example in LinkRealTimeLoads::Example()
+to explore package functionality. Example() will write package
+directories and outputs to a user-specified path and write a html report
+with interactive plots.
+
 <figure>
 <img src="man/figures/README-example-1.png"
 alt="Suspended-sediment load estimated from estimates of TSS and discharge estimated from ADCP measurments collected at 10-minute intervals" />
