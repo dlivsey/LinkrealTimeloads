@@ -80,7 +80,7 @@ compute_from_time <- "2023-04-01 00:00:00 AEST"
 compute_to_time <- "2023-06-01 00:00:00 AEST"
 max_points <- 30
 
-QAQC_Report(author,user_data_folder,site,site_name,compute_from_time,compute_to_time,max_points)
+LinkrealTimeloads::QAQC_Report(author,user_data_folder,site,site_name,compute_from_time,compute_to_time,max_points)
 
 
 return(Output)

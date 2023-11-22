@@ -61,12 +61,34 @@ Loads <- readRDS(paste0(user_data_folder,'/',site,'/Loads.rds'))
 Site <- readRDS(paste0(user_data_folder,"/Site_List.rds"))
 Site <- Site[Site$Site_Folder==site,] 
 
+# Load TSS data 
+Sediment_Samples <- readRDS(paste0(user_data_folder,'/',site,'/Analyte_data/Sediment_Samples.rds'))
+
 
 if (length(period)==0) {
   period <- Loads[["Total_load_time_period"]]
 }
 
 ind <- Loads$time>=min(period) & Loads$time<=max(period)
+indS <- Sediment_Samples$time>=min(period) & Sediment_Samples$time<=max(period)
+
+Sediment_Samples <- Sediment_Samples[indS,]
+
+# Get indices nearest to Sediment_Samples time 
+for (i in 1:nrow(Sediment_Samples)) {
+  Sediment_Samples$nearest_time_index_in_Loads[i] <- which(min(abs(Loads$time-Sediment_Samples$time[i]))==abs(Loads$time-Sediment_Samples$time[i]))
+  dt <- as.double(min(abs(Loads$time-Sediment_Samples$time[i])),units = 'mins')
+  
+  Sediment_Samples$dt_mins[i] <- min(abs(Loads$time-Sediment_Samples$time[i]))
+}
+
+# get samples between 10 min time punches 
+Sediment_Samples <- Sediment_Samples[Sediment_Samples$dt_mins<10,]
+
+# for plotting place TSS sample at nearest Load time
+Samples <- rep(NA,length(Loads$time))
+Samples[Sediment_Samples$nearest_time_index_in_Loads] <- Sediment_Samples$SSCpt_mg_per_liter
+Samples <- Samples[ind]
 #ind <- Loads$time>=min(period) & Loads$time<=Loads$time[5000]
 
 # data frame for plotting, note order of variables is important, first column is the first y axis, and so on...
@@ -75,7 +97,7 @@ TSS_imputed <- TSS
 TSS[Loads$Imputed_TSS[ind]] <- NA
 TSS_imputed[!Loads$Imputed_TSS[ind]] <- NA
 
-data <- data.frame(TSS,TSS_imputed, Q = Loads$Discharge_m3_per_sec[ind])
+data <- data.frame(TSS,Samples,TSS_imputed, Q = Loads$Discharge_m3_per_sec[ind])
 
 # Range of variables for plotting, can be used in dyAxis(valueRange = y1r) but seems to remove auto-scaling when panning 
 #y1r <- c(floor(min(data[,1],na.rm = TRUE))*0.9,ceiling(max(data[,1],na.rm = TRUE))*1.1)
@@ -93,11 +115,13 @@ p <- dygraph(zts,main = Site$Site_Name, group = "timeseries") %>%
   dyAxis("y2", label = "Discharge (Q) (m<sup>3</sup>/s) ", independentTicks = TRUE) %>%     
   dySeries("Q", axis=('y2'),color = "blue") %>%
   dyAxis("y", label = "TSS (mg/l)", independentTicks = TRUE)%>%
+  dySeries("Samples", axis=('y'),color = "black",pointShape  = "circle",label = "TSS sample",pointSize = 5) %>%
   dySeries("TSS", axis=('y'),color = "red",pointShape  = "circle") %>%
   dySeries("TSS_imputed", axis=('y'),color = "red",pointShape  = "triangle",label = "Imputed TSS",strokePattern = "dashed") %>%
   dyRangeSelector(fillColor = "") %>%
   dyCrosshair(direction = "vertical") %>%
-  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 1), hideOnMouseOut = FALSE)
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 1), hideOnMouseOut = FALSE) %>%
+ dyLegend(show = "always", hideOnMouseOut = FALSE)
  
 
 ### Lower panel ----
@@ -132,7 +156,8 @@ p2 <- dygraph(zts,main = '', group = "timeseries") %>%
   dyAxis("y2", label = "Cumulative Load (kt)", independentTicks = TRUE) %>%     
   dySeries("Cumulative_Load", axis=('y2'),color = "black",label = "Cumulative Load") %>%
 #  dySeries("Cumulative_Load_imputed", axis=('y2'),color = "black",label = "Imputed Cumulative Load",strokePattern = "dashed") %>%
-  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 1), hideOnMouseOut = FALSE)
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 1), hideOnMouseOut = FALSE) %>%
+ dyLegend(show = "always", hideOnMouseOut = FALSE)
 
 ### Plots ----
 p
@@ -239,7 +264,8 @@ p4 <- dygraph(zts,main = Site$Site_Name, group = "timeseries") %>%
   dySeries("Kt", axis=('y'),color = "red") %>%
   dyRangeSelector(fillColor = "") %>%
   dyCrosshair(direction = "vertical") %>%
-  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 2), hideOnMouseOut = FALSE)
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 2), hideOnMouseOut = FALSE) %>%
+ dyLegend(show = "always", hideOnMouseOut = FALSE)
 
 # plot timeseries 
 p4
