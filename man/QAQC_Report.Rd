@@ -5,10 +5,10 @@
 \title{Writes QAQC Report using QAQC_Report.Rmd in LinkrealTimeloads/extdata to user_data_folder/site}
 \usage{
 QAQC_Report(
-  author,
-  user_data_folder,
-  site,
-  site_name,
+  author = NULL,
+  user_data_folder = NULL,
+  site = NULL,
+  site_name = NULL,
   compute_from_time = NULL,
   compute_to_time = NULL,
   max_points = 30
@@ -30,7 +30,7 @@ QAQC_Report(
 \item{max_points}{maximum number of points per period in Kt(SCI) (integer)}
 }
 \value{
-Writes html report to user_data_folder/site
+file path to html. Also writes html report to user_data_folder/site if provided by user
 }
 \description{
 Report is written in html format to user_data_folder/site folder. Report provides interactive plots to identify anomalies in timeseries and regression data.

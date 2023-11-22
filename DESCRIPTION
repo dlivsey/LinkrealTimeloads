@@ -8,7 +8,7 @@ Authors@R:
            email = "livsey.daniel@gmail.com",
            comment = c(ORCID = "0000-0002-2028-6128"))
 Description: LinkrealTimeloads provides code to compute suspended-sediment load using RDI ADCP files, Eagle IO csv files, discharge, and cross-section surveys. Stephen Wallace provided crucial discussion and the functions in Import_Channelmaster_Data() that import data from RDI 000 files. Package code imports, processes, and computes suspended-sediment load using the CRAN package "realTimeloads". TSS is predicted from acoustic backscatter, turbidity, and time-period following Livsey et al (2023) at https://doi.org/10.1029/2022WR033982 (see further discussion below). Package code is designed to allow WQI staff to setup directories for other sites and compute suspended-sediment loads using ADCP. 
-License: GPL (>= 3) + file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
@@ -29,7 +29,8 @@ Imports:
     plotly,
     ggplot2,
     dygraphs,
-    xts
+    xts,
+    forecast
 Suggests: 
     knitr,
     rmarkdown

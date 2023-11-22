@@ -89,6 +89,16 @@ for (k in 1:number_of_sites) {
     Qimputed <- Qimputed==1 # convert to logical
     Q <- Q$x_interpolated
 
+    # determine if TSS data was imputed or not (not needed since using time from TSS_Imputed file )
+    # C_imputed <- realTimeloads::linear_interpolation_with_time_limit(TSS$Imputed_data$time,TSS$Imputed_data$x,time,threshold = 1)
+    # Cimputed <- approx(TSS$Imputed_data$time,TSS$Imputed_data$imputed,time,method = 'constant')$y
+    # Cimputed[is.na(Cimputed)] <- 1
+    # Cimputed[C_imputed$ibad] <- 1
+    # Cimputed <- Cimputed==1 # convert to logical
+
+    C_imputed <- TSS$Imputed_data$x
+    Cimputed <- TSS$Imputed_data$imputed
+
     # io <-  Discharge$Imputed_data$imputed
     # x <- c(Discharge$Imputed_data$time[500],Discharge$Imputed_data$time[600])
     # plot(Discharge$Imputed_data$time[io],Discharge$Imputed_data$Discharge_m_cubed_per_s[io],xlim = x)
@@ -106,6 +116,8 @@ for (k in 1:number_of_sites) {
       Qs <- C*Q*dt*1e-9
 
 
+
+
       ind <- time>= from_time & time <= to_time
 
       Co <- data.frame(matrix(nrow=length(time),ncol=5))
@@ -120,7 +132,9 @@ for (k in 1:number_of_sites) {
       Qs_kt$median_confidence <- Qs
       Total_load_kt$median_confidence <- sum(Qs[ind],na.rm=TRUE)
 
-      Output <- list('time'=time,'Discharge_m3_per_sec'=Q,'TSS_mg_per_liter' = Co,'Load_kt' = Qs_kt,'Total_load_kt'=Total_load_kt,'folder'= all_site_folders[k],'Total_load_time_period' = c(from_time,to_time))
+      #Output <- list('time'=time,'Discharge_m3_per_sec'=Q,'TSS_mg_per_liter' = Co,'Load_kt' = Qs_kt,'Total_load_kt'=Total_load_kt,'folder'= all_site_folders[k],'Total_load_time_period' = c(from_time,to_time))
+
+      Output <- list('time'=time,'Discharge_m3_per_sec'=Q,'Imputed_discharge'= Qimputed,'TSS_mg_per_liter' = Co,'Imputed_TSS' = Cimputed,'Load_kt' = Qs_kt,'Total_load_kt'=Total_load_kt,'folder'= all_site_folders[k],'Total_load_time_period' = c(from_time,to_time))
 
     }
 
@@ -139,14 +153,6 @@ for (k in 1:number_of_sites) {
     # uncertainty on imputed data
     # use validation residuals of imputed data to estimate uncertainty on imputed data below
     res <- TSS$Validation_data_and_statistics$validation_data$validation_data-TSS$Validation_data_and_statistics$validation_data$validation_data_predictions
-    C_imputed <- realTimeloads::linear_interpolation_with_time_limit(TSS$Imputed_data$time,TSS$Imputed_data$x,time,threshold = 1)
-
-    # determine if data was imputed or not
-    Cimputed <- approx(TSS$Imputed_data$time,TSS$Imputed_data$imputed,time,method = 'constant')$y
-    Cimputed[is.na(Cimputed)] <- 1
-    Cimputed[C_imputed$ibad] <- 1
-    Cimputed <- Cimputed==1 # convert to logical
-    C_imputed <- C_imputed$x_interpolated
 
     C <- matrix(nrow = nrow(Ci),ncol=length(time))
     Qsi =  matrix(NA, nrow = nrow(Ci), ncol = length(time))

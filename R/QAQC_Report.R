@@ -12,7 +12,7 @@
 #' @param max_points maximum number of points per period in Kt(SCI) (integer)
 #'
 #'
-#' @return Writes html report to user_data_folder/site
+#' @return file path to html. Also writes html report to user_data_folder/site if provided by user
 #'
 #' @seealso
 #' \code{\link{Example}} Example of package steps and reporting
@@ -27,22 +27,45 @@
 #'
 #' Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
 #'
-QAQC_Report <- function(author,user_data_folder,site,site_name,compute_from_time = NULL,compute_to_time = NULL,max_points = 30) {
+#'@export
+QAQC_Report <- function(author = NULL,user_data_folder = NULL,site = NULL,site_name = NULL,compute_from_time = NULL,compute_to_time = NULL,max_points = 30) {
+
 
   # Assumes RMD file is in extdata of R package
   Rmdfile <- paste0(system.file("extdata", package = "LinkrealTimeloads"),'/QAQC_Report.Rmd')
 
-  rmarkdown::render(Rmdfile,
-                    params = list(
-                      author = author,
-                      user_data_folder = user_data_folder,
-                      site_folder = site,
-                      site_name = site_name,
-                      compute_from_time = compute_from_time,
-                      compute_to_time = compute_to_time,
-                      max_points = max_points
-                    ),
-                    output_dir = paste0(user_data_folder,'/',site),
-                    output_file = paste0("QA_QC_report_",site, "_", format(Sys.Date(),'%Y_%B_%d'), ".html")
-  )
+  if (!is.null(user_data_folder) & !is.null(site)) {
+
+    file <- paste0("QA_QC_report_",site, "_", format(Sys.Date(),'%Y_%B_%d'), ".html")
+
+    rmarkdown::render(Rmdfile,
+                      params = list(
+                        author = author,
+                        user_data_folder = user_data_folder,
+                        site_folder = site,
+                        site_name = site_name,
+                        compute_from_time = compute_from_time,
+                        compute_to_time = compute_to_time,
+                        max_points = max_points
+                      ),
+                      output_dir = paste0(user_data_folder,'/',site),
+                      output_file = file
+    )
+  }
+
+  # Launch gui inputs if user_data_folder or site is not provided
+  if (is.null(user_data_folder) | is.null(site)) {
+
+    file <- rmarkdown::render(Rmdfile,
+                      params = "ask",
+                      output_dir = NULL,
+                      output_file = NULL)
+
+  }
+
+  browseURL(file)
+
+  return(invisible(file))
+
+
 }

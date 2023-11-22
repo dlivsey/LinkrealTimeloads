@@ -2,7 +2,7 @@
 % Please edit documentation in R/Impute_TSS.R
 \name{Impute_TSS}
 \alias{Impute_TSS}
-\title{Infills missing TSS data using realTimeloads::impute_data()}
+\title{Infills missing TSS data using forecast::impute_data()}
 \usage{
 Impute_TSS(user_data_folder, site = NULL, MC = 1, ptrain = 0.9)
 }
@@ -19,7 +19,7 @@ Impute_TSS(user_data_folder, site = NULL, MC = 1, ptrain = 0.9)
 Imputed data in /Analyte_data/TSS_Imputed.rds
 }
 \description{
-Imputes TSS using tidal model fit in realTimeloads::impute_data(). I tried the Froude number and tidally filtered discharge as predictors but tidal model predictors provided reasonable fits. In https://aha.net.au/wp-content/uploads/AHA-Journal-Spring-2022_HR.pdf I show TSS imputed using the Froude number, tidally filtered discharge , and a nonlinear auto regressive exogenous model (NARX) model. A NARX model is similar to the Bidirectional RNN in keras see https://keras.io/guides/working_with_rnns/
+Imputes TSS using adaptation of realTimeloads::impute_data_with_arima(). In https://aha.net.au/wp-content/uploads/AHA-Journal-Spring-2022_HR.pdf I show TSS imputed using the Froude number, tidally filtered discharge , and a nonlinear auto regressive exogenous model (NARX) model. A NARX model is similar to the Bidirectional RNN in keras see https://keras.io/guides/working_with_rnns/. For future work I suggest using a RNN in keras.
 }
 \note{
 All functions expect data to be in following folders:
@@ -53,12 +53,16 @@ Users should ensure imputation is reasonable and adjust predictors as needed.
 }
 
 \examples{
-# See vignette('LinkrealTimeloads',package = LinkrealTimeloads)
+# See use in Example()
 }
 \references{
 Stephen Wallace (2023, DES) provided crucial functions in Import_Channelmaster_Data() to extract data from binary 000 files.
 
 Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of Concentration and Discharge_. R package version 1.0.0.
+
+Hyndman R, Athanasopoulos G, Bergmeir C, Caceres G, Chhay L, O'Hara-Wild M, Petropoulos F, Razbash S, Wang E, Yasmeen F (2023). forecast: Forecasting functions for time series and linear models. R package version 8.21.1, https://pkg.robjhyndman.com/forecast/.
+
+Hyndman RJ, Khandakar Y (2008). “Automatic time series forecasting: the forecast package for R.” Journal of Statistical Software, 26(3), 1–22. doi:10.18637/jss.v027.i03.
 }
 \seealso{
 \code{\link{Link_to_Real_time_loads}} Process data in specified folder structure using realTimeloads package

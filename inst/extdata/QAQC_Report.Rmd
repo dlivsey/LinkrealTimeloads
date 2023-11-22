@@ -67,9 +67,15 @@ if (length(period)==0) {
 }
 
 ind <- Loads$time>=min(period) & Loads$time<=max(period)
+#ind <- Loads$time>=min(period) & Loads$time<=Loads$time[5000]
 
 # data frame for plotting, note order of variables is important, first column is the first y axis, and so on...
-data <- data.frame(TSS = Loads$TSS_mg_per_liter$median_confidence[ind], Q = Loads$Discharge_m3_per_sec[ind])
+TSS <- Loads$TSS_mg_per_liter$median_confidence[ind]
+TSS_imputed <- TSS
+TSS[Loads$Imputed_TSS[ind]] <- NA
+TSS_imputed[!Loads$Imputed_TSS[ind]] <- NA
+
+data <- data.frame(TSS,TSS_imputed, Q = Loads$Discharge_m3_per_sec[ind])
 
 # Range of variables for plotting, can be used in dyAxis(valueRange = y1r) but seems to remove auto-scaling when panning 
 #y1r <- c(floor(min(data[,1],na.rm = TRUE))*0.9,ceiling(max(data[,1],na.rm = TRUE))*1.1)
@@ -83,14 +89,15 @@ zts <- xts(data,order.by = Loads$time[ind])
 
 # data in last call to dyAxis is plotted on top
 p <- dygraph(zts,main = Site$Site_Name, group = "timeseries") %>%
-  dyOptions(labelsUTC = FALSE, fillGraph=FALSE, fillAlpha=0.1, drawGrid = FALSE,pointSize = 2,drawPoints = TRUE) %>%
+  dyOptions(labelsUTC = FALSE, fillGraph=FALSE, fillAlpha=0.1, drawGrid = FALSE,pointSize = 3,drawPoints = TRUE) %>%
   dyAxis("y2", label = "Discharge (Q) (m<sup>3</sup>/s) ", independentTicks = TRUE) %>%     
   dySeries("Q", axis=('y2'),color = "blue") %>%
   dyAxis("y", label = "TSS (mg/l)", independentTicks = TRUE)%>%
-  dySeries("TSS", axis=('y'),color = "red") %>%
+  dySeries("TSS", axis=('y'),color = "red",pointShape  = "circle") %>%
+  dySeries("TSS_imputed", axis=('y'),color = "red",pointShape  = "triangle",label = "Imputed TSS",strokePattern = "dashed") %>%
   dyRangeSelector(fillColor = "") %>%
   dyCrosshair(direction = "vertical") %>%
-  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 2), hideOnMouseOut = FALSE)
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 1), hideOnMouseOut = FALSE)
  
 
 ### Lower panel ----
@@ -103,7 +110,8 @@ cLoad[is.na(cLoad)] <- 0
 cLoad <- cumsum(cLoad)
 cLoad[c(1,diff(cumsum(cLoad)))==0] <- NA
 
-data <- data.frame(Load = Loads$Load_kt$median_confidence[ind], Cumulative_Load = cLoad)
+
+data <- data.frame(Load = Loads$Load_kt$median_confidence[ind]*1e3, Cumulative_Load = cLoad)
 
 # Range of variables for plotting, can be used in dyAxis(valueRange = y1r) but seems to remove auto-scaling when panning 
 #y1r <- c(floor(min(data[,1],na.rm = TRUE))*0.9,ceiling(max(data[,1],na.rm = TRUE))*1.1)
@@ -116,14 +124,15 @@ zts <- xts(data,order.by = Loads$time[ind])
 # see examples from: https://rstudio.github.io/dygraphs/gallery-axis-options.html for help making plots in dygraph
 # data in last call to dyAxis is plotted on top
 p2 <- dygraph(zts,main = '', group = "timeseries") %>%
-  dyOptions(labelsUTC = FALSE, fillGraph=FALSE, fillAlpha=0.1, drawGrid = FALSE,pointSize = 2,drawPoints = TRUE) %>%
-  dyAxis("y", label = "Load (kt)", independentTicks = TRUE)%>%
+  dyOptions(labelsUTC = FALSE, fillGraph=FALSE, fillAlpha=0.1,pointSize = 3, drawGrid = FALSE,drawPoints = TRUE) %>%
+  dyAxis("y", label = "Load (t)", independentTicks = TRUE)%>%
   dySeries("Load", axis=('y'),color = "green") %>%
   dyRangeSelector(fillColor = "") %>%
   dyCrosshair(direction = "vertical") %>%
   dyAxis("y2", label = "Cumulative Load (kt)", independentTicks = TRUE) %>%     
-  dySeries("Cumulative_Load", axis=('y2'),color = "black") %>%
-  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 2), hideOnMouseOut = FALSE)
+  dySeries("Cumulative_Load", axis=('y2'),color = "black",label = "Cumulative Load") %>%
+#  dySeries("Cumulative_Load_imputed", axis=('y2'),color = "black",label = "Imputed Cumulative Load",strokePattern = "dashed") %>%
+  dyHighlight(highlightCircleSize = 5, highlightSeriesBackgroundAlpha = 0.8,highlightSeriesOpts = list(strokeWidth = 1), hideOnMouseOut = FALSE)
 
 ### Plots ----
 p
@@ -189,6 +198,16 @@ p3 <-  p3 + geom_point(aes(colour = factor(period),shape = factor(period)))
 # plot ggplot in interactive mode using plotly 
 ggplotly(p3)
 
+# Show table of time periods 
+ztable <- unique(regr[c("period","Period_Start_time","Period_End_time")])
+for (i in 1:nrow(ztable)) {
+  ztable$n[i] <- sum(regr$period==ztable$period[i])
+}
+colnames(ztable) <- c("Period","Start","End","Number of Kt(SCI) pairs")
+
+knitr::kable(ztable,caption='Regression periods',row.names = FALSE)
+
+
 ```
 
 ```{r Kt, echo=FALSE,fig.dim = c(3, 1),dpi=300}
@@ -213,7 +232,7 @@ zts <- xts(data,order.by = Loads$time[ind])
 
 # data in last call to dyAxis is plotted on top
 p4 <- dygraph(zts,main = Site$Site_Name, group = "timeseries") %>%
-  dyOptions(labelsUTC = FALSE, fillGraph=FALSE, fillAlpha=0.1, drawGrid = FALSE,pointSize = 2,drawPoints = TRUE) %>%
+  dyOptions(labelsUTC = FALSE, fillGraph=FALSE, fillAlpha=0.1, drawGrid = FALSE,pointSize = 3,drawPoints = TRUE) %>%
   dyAxis("y2", label = "Discharge (Q) (m<sup>3</sup>/s) ", independentTicks = TRUE) %>%     
   dySeries("Q", axis=('y2'),color = "blue") %>%
   dyAxis("y", label = "Kt (dB)", independentTicks = TRUE)%>%

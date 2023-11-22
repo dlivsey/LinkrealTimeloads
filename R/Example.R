@@ -33,8 +33,10 @@
 #' @author Daniel Livsey (2023) ORCID: 0000-0002-2028-6128
 #' @examples
 #' \dontrun{
-#' # Writes to user's Desktop
-#' user_data_folder <- paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkreaTimeloads_Output')
+#' # Write to user's Desktop
+#' path <- file.path(path.expand('~'))
+#' dpath <- gsub('Documents','Desktop',path)
+#' user_data_folder <- paste0(dpath,'/LinkreaTimeloads_Output')
 #' Output <- Example(user_data_folder)
 #' }
 #' @references
@@ -62,7 +64,7 @@ LinkrealTimeloads::initialize_folders_and_move_data_files(user_data_folder,site)
 LinkrealTimeloads::Link_to_Real_time_loads(user_data_folder,site)
 
 # Compute loads
-Output <- LinkrealTimeloads::Compute_load(user_data_folder,site)
+Output <- Compute_load(user_data_folder,site)
 
 # Save list with discharge, TSS, and loads for reporting and plotting
 saveRDS(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.rds'))
@@ -70,9 +72,10 @@ saveRDS(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.r
 # Write QAQC report
 author <- 'Daniel Livsey'
 site_name <- 'Johnstone River at Innisfail'
-# set times to NULL to plot all available data
-#compute_from_time <- NULL
-#compute_to_time <- NULL
+# set times to plot all available data
+#compute_from_time <- "2000-04-01 00:00:00 AEST"
+#compute_to_time <- "2100-06-01 00:00:00 AEST"
+# plot for just one event
 compute_from_time <- "2023-04-01 00:00:00 AEST"
 compute_to_time <- "2023-06-01 00:00:00 AEST"
 max_points <- 30
