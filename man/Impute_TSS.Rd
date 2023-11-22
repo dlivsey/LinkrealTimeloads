@@ -2,7 +2,7 @@
 % Please edit documentation in R/Impute_TSS.R
 \name{Impute_TSS}
 \alias{Impute_TSS}
-\title{Infills missing TSS data using forecast::impute_data()}
+\title{Infills missing TSS data using adaptation of realTimeloads::impute_data_with_arima()}
 \usage{
 Impute_TSS(user_data_folder, site = NULL, MC = 1, ptrain = 0.9)
 }
@@ -19,7 +19,7 @@ Impute_TSS(user_data_folder, site = NULL, MC = 1, ptrain = 0.9)
 Imputed data in /Analyte_data/TSS_Imputed.rds
 }
 \description{
-Imputes TSS using adaptation of realTimeloads::impute_data_with_arima(). In https://aha.net.au/wp-content/uploads/AHA-Journal-Spring-2022_HR.pdf I show TSS imputed using the Froude number, tidally filtered discharge , and a nonlinear auto regressive exogenous model (NARX) model. A NARX model is similar to the Bidirectional RNN in keras see https://keras.io/guides/working_with_rnns/. For future work I suggest using a RNN in keras.
+Imputes TSS using adaptation of realTimeloads::impute_data_with_arima(). In https://aha.net.au/wp-content/uploads/AHA-Journal-Spring-2022_HR.pdf I show TSS imputed using the Froude number, tidally filtered discharge , and a nonlinear auto regressive exogenous model (NARX) model. A NARX model is similar to the Bidirectional RNN in keras see https://keras.io/guides/working_with_rnns/. For future work RNN in keras is suggested.
 }
 \note{
 All functions expect data to be in following folders:

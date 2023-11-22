@@ -1,6 +1,6 @@
-#' Infills missing TSS data using forecast::impute_data()
+#' Infills missing TSS data using adaptation of realTimeloads::impute_data_with_arima()
 #'
-#' Imputes TSS using adaptation of realTimeloads::impute_data_with_arima(). In https://aha.net.au/wp-content/uploads/AHA-Journal-Spring-2022_HR.pdf I show TSS imputed using the Froude number, tidally filtered discharge , and a nonlinear auto regressive exogenous model (NARX) model. A NARX model is similar to the Bidirectional RNN in keras see https://keras.io/guides/working_with_rnns/. For future work I suggest using a RNN in keras.
+#' Imputes TSS using adaptation of realTimeloads::impute_data_with_arima(). In https://aha.net.au/wp-content/uploads/AHA-Journal-Spring-2022_HR.pdf I show TSS imputed using the Froude number, tidally filtered discharge , and a nonlinear auto regressive exogenous model (NARX) model. A NARX model is similar to the Bidirectional RNN in keras see https://keras.io/guides/working_with_rnns/. For future work RNN in keras is suggested.
 #'
 #' @param user_data_folder file path to user data folder
 #' @param site site folder under user_data_folder
