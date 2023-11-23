@@ -215,9 +215,11 @@ for (k in 1:number_of_sites) {
      colnames(tse) = c('x_at_minus_two_sigma_confidence','x_at_minus_one_sigma_confidence','x_at_median_confidence','x_at_plus_one_sigma_confidence','x_at_plus_two_sigma_confidence')
 
      for (i in 1:length(yp)) {
-       tse[i,] <- quantile(yp[i]+sample(res,iters,replace = TRUE),probs = quants , na.rm = TRUE)
+       zzz <- yp[i]+sample(res,iters,replace = TRUE)
+       zzz[zzz<0] <- NA # prevent error estimates below 0
+       tse[i,] <- quantile(zzz,probs = quants , na.rm = TRUE)
      }
-
+      rm(zzz)
 
       # format outouts to match realTimeloads::impute_data
 

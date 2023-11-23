@@ -43,6 +43,8 @@ LinkrealTimeloads provides code to compute suspended-sediment load using RDI ADC
 
 \code{\link{QAQC_Report}} Write html report with interactive plots for QAQC of results
 
+\code{\link{QAQC_Annual_Reports}} Generates one or more annual QAQC_Reports for user-provided site
+
 \code{\link{Site__and_Channel_Information_Update}} Add ADCP bank location variables to xs.rds file from Stephen Wallace
 
 \code{\link{Site_list_update}} Writes or update site information to Site_List.rds

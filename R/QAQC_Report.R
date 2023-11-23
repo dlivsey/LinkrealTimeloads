@@ -4,6 +4,7 @@
 #'
 #' @param author Your name (string)
 #' @param user_data_folder file path to user data folder (string)
+#' @param output_file custom output file name to override default name (string)
 #' @param site site folder under user_data_folder (string)
 #' @param site_name name of site for rendering purposes (string)
 #' @param user_data_folder file path to user data folder (string)
@@ -28,15 +29,20 @@
 #' Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
 #'
 #'@export
-QAQC_Report <- function(author = NULL,user_data_folder = NULL,site = NULL,site_name = NULL,compute_from_time = NULL,compute_to_time = NULL,max_points = 30) {
+QAQC_Report <- function(author = NULL,user_data_folder = NULL,output_file = NULL,site = NULL,site_name = NULL,compute_from_time = NULL,compute_to_time = NULL,max_points = 30) {
 
 
   # Assumes RMD file is in extdata of R package
   Rmdfile <- paste0(system.file("extdata", package = "LinkrealTimeloads"),'/QAQC_Report.Rmd')
 
   if (!is.null(user_data_folder) & !is.null(site)) {
-
+    if (is.null(output_file)) {
     file <- paste0("QA_QC_report_",site, "_", format(Sys.Date(),'%Y_%B_%d'), ".html")
+    }
+    if (!is.null(output_file)) {
+      file <- paste0(output_file,".html")
+    }
+
 
     rmarkdown::render(Rmdfile,
                       params = list(
