@@ -28,6 +28,8 @@
 #'
 #'\code{\link{Link_to_Real_time_loads}} Calls package functions in appropriate order to process data in one or more site folders under specified folder path
 #'
+#'\code{\link{predict_f20}} Predict the fraction of sediment < 20 um by mass per Livsey et al (2022)
+#'
 #'\code{\link{Predict_TSS_from_SCI}} Estimates TSS from processed acoustic backscatter data and turbidity per Livsey et al (2023)
 #'
 #'\code{\link{Process_Backscatter}} Process acoustic backscatter from ADCP for attenuation due to water and sediment using functions from realTimeloads
@@ -74,6 +76,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom mice mice.impute.cart
 #' @importFrom plotly ggplotly
+#' @importFrom pracma linspace
 #' @importFrom realTimeloads acoustic_backscatter_processing
 #' @importFrom realTimeloads attenuation_of_sound_by_water
 #' @importFrom realTimeloads bootstrap_regression
@@ -86,6 +89,8 @@
 #' @importFrom realTimeloads near_field_correction
 #' @importFrom realTimeloads speed_of_sound
 #' @importFrom realTimeloads surrogate_to_analyte_interpolation
+#' @importFrom rpart prune
+#' @importFrom rpart rpart
 #' @importFrom signal butter
 #' @importFrom signal buttord
 #' @importFrom signal filtfilt

@@ -30,7 +30,9 @@ Imports:
     ggplot2,
     dygraphs,
     xts,
-    forecast
+    forecast,
+    pracma,
+    rpart
 Suggests: 
     knitr,
     rmarkdown
