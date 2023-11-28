@@ -4,10 +4,10 @@
 \alias{Example}
 \title{Executes code provided in vignette('LinkrealTimeloads') and writes QAQC report in html format.}
 \usage{
-Example(user_data_folder)
+Example(user_data_folder = NULL)
 }
 \arguments{
-\item{user_data_folder}{file path to user data folder}
+\item{user_data_folder}{file path to user data folder, defaults to Desktop/LinkrealTimeloads_Output}
 }
 \value{
 List with suspended-sediment load estimates at Johnstone River at Innisfail saved to user_data_folder/site/Loads.rds
@@ -44,11 +44,8 @@ See vignette('LinkrealTimeloads') for further instructions
 }
 \examples{
 \dontrun{
-# Write to user's Desktop
-path <- file.path(path.expand('~'))
-dpath <- gsub('Documents','Desktop',path)
-user_data_folder <- paste0(dpath,'/LinkreaTimeloads_Output')
-Output <- Example(user_data_folder)
+# Write to Desktop/LinkrealTimeloads_Output
+Output <- Example()
 }
 }
 \references{
