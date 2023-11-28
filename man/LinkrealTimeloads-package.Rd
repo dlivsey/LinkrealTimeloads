@@ -52,6 +52,11 @@ LinkrealTimeloads provides code to compute suspended-sediment load using RDI ADC
 \code{\link{Site_list_update}} Writes or update site information to Site_List.rds
 }
 
+\section{Acknowledgements}{
+
+Funding for this research was provided by an Advance Queensland Industry Research Fellowship
+}
+
 \references{
 Livsey, D. N., Turner, R. D. R., & Grace, P. R. (2023). Combining Optical and Acoustic Backscatter Measurements for Monitoring of Fine Suspended‐Sediment Concentration Under Changes in Particle Size and Density. Water Resources Research, 59(8), e2022WR033982
 
