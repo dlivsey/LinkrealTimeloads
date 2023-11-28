@@ -24,8 +24,9 @@ You can install the development version of LinkrealTimeloads from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-#devtools::install_github("dlivsey/LinkrealTimeloads", build_vignettes = TRUE)
+install.packages("devtools")
+
+devtools::install_github("dlivsey/LinkrealTimeloads", build_vignettes = TRUE)
 ```
 
 ## Example
@@ -39,7 +40,7 @@ user-specified folder
 
 library(LinkrealTimeloads)
 
-# This will write outputs to the folder "/LinkreaTimeloads_Output" on your Desktop 
+# This will write outputs to the folder "/LinkrealTimeloads_Output" on your Desktop 
 output_folder <-  paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkrealTimeloads_Output')
 
 Loads <- LinkrealTimeloads::Example(output_folder)

@@ -29,9 +29,11 @@ Package code is designed to allow WQI staff to setup directories for other sites
 
 You can install the development version of LinkrealTimeloads from [GitHub](https://github.com/) with:
 
-``` r
-# install.packages("devtools")
-#devtools::install_github("dlivsey/LinkrealTimeloads", build_vignettes = TRUE)
+``` {r install,eval=FALSE}
+install.packages("devtools")
+
+devtools::install_github("dlivsey/LinkrealTimeloads", build_vignettes = TRUE)
+
 ```
 
 ## Example
@@ -42,7 +44,7 @@ Example code and discussion is provided in vignette("LinkrealTimeloads"). Linkre
 
 library(LinkrealTimeloads)
 
-# This will write outputs to the folder "/LinkreaTimeloads_Output" on your Desktop 
+# This will write outputs to the folder "/LinkrealTimeloads_Output" on your Desktop 
 output_folder <-  paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkrealTimeloads_Output')
 
 Loads <- LinkrealTimeloads::Example(output_folder)
