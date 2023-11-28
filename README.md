@@ -40,7 +40,7 @@ user-specified folder
 library(LinkrealTimeloads)
 
 # This will write outputs to the folder "/LinkreaTimeloads_Output" on your Desktop 
-output_folder <-  paste0(file.path(path.expand('~'),'Desktop'),'/LinkreaTimeloads_Output')
+output_folder <-  paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkrealTimeloads_Output')
 
 Loads <- LinkrealTimeloads::Example(output_folder)
 ```

@@ -2,7 +2,7 @@
 #'
 #' Writes folders and files using code in vignette('LinkrealTimeloads') to folder path specified by user_data_folder. Uses example data files provided package folder LinkrealTimeloads/extdata. The QAQC report in html format provides interactive and shareable plots
 #'
-#' @param user_data_folder file path to user data folder
+#' @param user_data_folder file path to user data folder, defaults to Desktop/LinkrealTimeloads_Output
 #' @note All functions expect data to be in following folders:
 #'
 #' \describe{
@@ -33,11 +33,8 @@
 #' @author Daniel Livsey (2023) ORCID: 0000-0002-2028-6128
 #' @examples
 #' \dontrun{
-#' # Write to user's Desktop
-#' path <- file.path(path.expand('~'))
-#' dpath <- gsub('Documents','Desktop',path)
-#' user_data_folder <- paste0(dpath,'/LinkrealTimeloads_Output')
-#' Output <- Example(user_data_folder)
+#' # Write to Desktop/LinkrealTimeloads_Output
+#' Output <- Example()
 #' }
 #' @references
 #'
@@ -52,7 +49,12 @@
 #' measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
 #'
 #' @export
-Example <- function(user_data_folder) {
+Example <- function(user_data_folder = NULL) {
+
+
+if (is.null(user_data_folder)) {
+user_data_folder <- paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkrealTimeloads_Output')
+}
 
 # Folder name and acronym for "Johnstone River at Innisfail"
 site <- 'JRI'
@@ -64,7 +66,7 @@ LinkrealTimeloads::initialize_folders_and_move_data_files(user_data_folder,site)
 LinkrealTimeloads::Link_to_Real_time_loads(user_data_folder,site)
 
 # Compute loads
-Output <- Compute_load(user_data_folder,site)
+Output <- LinkrealTimeloads::Compute_load(user_data_folder,site)
 
 # Save list with discharge, TSS, and loads for reporting and plotting
 saveRDS(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.rds'))
@@ -73,7 +75,7 @@ saveRDS(Output,file = paste0(paste0(paste0(user_data_folder,'/'),site),'/Loads.r
 author <- 'Daniel Livsey'
 site_name <- 'Johnstone River at Innisfail'
 # set times to plot all available data
-#compute_from_time <- "2000-04-01 00:00:00 AEST"
+#compte_from_time <- "2000-04-01 00:00:00 AEST"
 #compute_to_time <- "2100-06-01 00:00:00 AEST"
 # plot for just one event
 compute_from_time <- "2023-04-01 00:00:00 AEST"

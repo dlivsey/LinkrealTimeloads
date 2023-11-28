@@ -32,6 +32,13 @@
 QAQC_Report <- function(author = NULL,user_data_folder = NULL,output_file = NULL,site = NULL,site_name = NULL,compute_from_time = NULL,compute_to_time = NULL,max_points = 30) {
 
 
+if (!is.null(compute_from_time)) {
+  compute_from_time <- as.POSIXct(compute_from_time)
+}
+if (!is.null(compute_to_time)) {
+  compute_to_time <- as.POSIXct(compute_to_time)
+}
+
   # Assumes RMD file is in extdata of R package
   Rmdfile <- paste0(system.file("extdata", package = "LinkrealTimeloads"),'/QAQC_Report.Rmd')
 

@@ -3,7 +3,7 @@ output:
   html_document: default
 params:
   author: ""
-  user_data_folder: !r paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkreaTimeloads_Output')
+  user_data_folder: !r paste0(gsub('Documents','Desktop',file.path(path.expand('~'))),'/LinkrealTimeloads_Output') 
   site_folder: JRI
   site_name: Johnstone River at Innisfail
   compute_from_time: !r Sys.Date()-365*3
@@ -49,7 +49,7 @@ The upper panel below shows timeseries of TSS and discharge used to compute susp
 
 The lower panel below shows timeseries of instantaneous and cumulative Load in kilotons (kt) computed from the product of TSS and discharge for the time period indicated by the user in "period". Note that load can be "negative" because of the product of upstream tidal flow (negative discharge) to TSS. An advantage of using continous estimates of TSS is that one can capture upstream sediment load. For some estuaries, especially in the dry season, sediment transport may be net upstream (i.e., negative cumulative load). 
 
-The plots are interactive and linked with time. The lower sub-panels can be used to zoom and pan across the timeseries. Anomalies in the data can be caused by errors in turbidity, acoustic backscatter, or imputation. Workers should visually inspect the timeseries and remove data as needed. 
+The plots are interactive and linked with time. The lower sub-panels can be used to zoom and pan across the timeseries. Anomalies in the data can be caused by errors in turbidity, acoustic backscatter, or imputation. Workers should visually inspect the timeseries and remove anomalous data as needed. 
 
 ```{r TSS, echo=FALSE,fig.dim = c(3, 1),dpi=300}
 
