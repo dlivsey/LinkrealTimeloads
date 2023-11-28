@@ -36,7 +36,7 @@
 #' # Write to user's Desktop
 #' path <- file.path(path.expand('~'))
 #' dpath <- gsub('Documents','Desktop',path)
-#' user_data_folder <- paste0(dpath,'/LinkreaTimeloads_Output')
+#' user_data_folder <- paste0(dpath,'/LinkrealTimeloads_Output')
 #' Output <- Example(user_data_folder)
 #' }
 #' @references
