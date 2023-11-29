@@ -2,7 +2,7 @@
 % Please edit documentation in R/Example.R
 \name{Example}
 \alias{Example}
-\title{Executes code provided in vignette('LinkrealTimeloads') and writes QAQC report in html format.}
+\title{Writes QAQC report in html format for example data provided with package.}
 \usage{
 Example(user_data_folder = NULL)
 }
@@ -13,7 +13,7 @@ Example(user_data_folder = NULL)
 List with suspended-sediment load estimates at Johnstone River at Innisfail saved to user_data_folder/site/Loads.rds
 }
 \description{
-Writes folders and files using code in vignette('LinkrealTimeloads') to folder path specified by user_data_folder. Uses example data files provided package folder LinkrealTimeloads/extdata. The QAQC report in html format provides interactive and shareable plots
+Writes folders and files using code in vignette('LinkrealTimeloads') to folder path specified by user_data_folder. Uses example data files provided package folder LinkrealTimeloads/extdata. The QAQC report in html format provides interactive and shareable plots. Example data provided from the Department of Environment and Science Great Barrier Reef Catchment Loads Monitoring Program (GBRCLMP). Please note no attempt has been made to remove data affected by sensor or sampling malfunctions, data are provided for illustration purposes only.
 }
 \note{
 All functions expect data to be in following folders:
@@ -49,15 +49,13 @@ Output <- Example()
 }
 }
 \references{
-Stephen Wallace (2023, DES) provided crucial functions in
-Import_Channelmaster_Data() to extract data from binary 000 files.
+Example data provided from the Department of Environment and Science Great Barrier Reef Catchment Loads Monitoring Program (GBRCLMP). Please note no attempt has been made to remove data affected by sensor or sampling malfunctions, data are provided for illustration purposes only.
 
-Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of
-Concentration and Discharge. R package version 1.0.0.
+Stephen Wallace (2023, DES) provided crucial functions in Import_Channelmaster_Data() to extract data from binary 000 files.
 
-Livsey, D.N. (in review). National Industry Guidelines for hydrometric
-monitoring–Part 12: Application of acoustic Doppler velocity meters to
-measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
+Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of Concentration and Discharge. R package version 1.0.0.
+
+Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
 }
 \author{
 Daniel Livsey (2023) ORCID: 0000-0002-2028-6128

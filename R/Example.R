@@ -1,6 +1,6 @@
-#' Executes code provided in vignette('LinkrealTimeloads') and writes QAQC report in html format.
+#' Writes QAQC report in html format for example data provided with package.
 #'
-#' Writes folders and files using code in vignette('LinkrealTimeloads') to folder path specified by user_data_folder. Uses example data files provided package folder LinkrealTimeloads/extdata. The QAQC report in html format provides interactive and shareable plots
+#' Writes folders and files using code in vignette('LinkrealTimeloads') to folder path specified by user_data_folder. Uses example data files provided package folder LinkrealTimeloads/extdata. The QAQC report in html format provides interactive and shareable plots. Example data provided from the Department of Environment and Science Great Barrier Reef Catchment Loads Monitoring Program (GBRCLMP). Please note no attempt has been made to remove data affected by sensor or sampling malfunctions, data are provided for illustration purposes only.
 #'
 #' @param user_data_folder file path to user data folder, defaults to Desktop/LinkrealTimeloads_Output
 #' @note All functions expect data to be in following folders:
@@ -38,15 +38,14 @@
 #' }
 #' @references
 #'
-#' Stephen Wallace (2023, DES) provided crucial functions in
-#' Import_Channelmaster_Data() to extract data from binary 000 files.
+#' Example data provided from the Department of Environment and Science Great Barrier Reef Catchment Loads Monitoring Program (GBRCLMP). Please note no attempt has been made to remove data affected by sensor or sampling malfunctions, data are provided for illustration purposes only.
 #'
-#' Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of
-#' Concentration and Discharge. R package version 1.0.0.
+#' Stephen Wallace (2023, DES) provided crucial functions in Import_Channelmaster_Data() to extract data from binary 000 files.
 #'
-#' Livsey, D.N. (in review). National Industry Guidelines for hydrometric
-#' monitoring–Part 12: Application of acoustic Doppler velocity meters to
-#' measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
+#'
+#' Livsey D.N. (2023). realTimeloads: Analyte Flux and Load from Estimates of Concentration and Discharge. R package version 1.0.0.
+#'
+#' Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia
 #'
 #' @export
 Example <- function(user_data_folder = NULL) {

@@ -49,10 +49,14 @@
 #'
 #' Livsey, D.N. (in review). National Industry Guidelines for hydrometric monitoring–Part 12: Application of acoustic Doppler velocity meters to measure suspended-sediment load. Bureau of Meteorology. Melbourne, Australia.
 #'
+#'Example data in LinkrealTimeloads/extdata provided from the Department of Environment and Science Great Barrier Reef Catchment Loads Monitoring Program (GBRCLMP). Please note no attempt has been made to remove data affected by sensor or sampling malfunctions, data are provided for illustration purposes only.
+#'
 #'@author Daniel Livsey (2023) ORCID: 0000-0002-2028-6128
 #'
 #'@section Acknowledgements:
 #' Funding for this research was provided by an Advance Queensland Industry Research Fellowship
+#'
+#' Example data in LinkrealTimeloads/extdata provided from the Department of Environment and Science Great Barrier Reef Catchment Loads Monitoring Program (GBRCLMP). Please note no attempt has been made to remove data affected by sensor or sampling malfunctions, data are provided for illustration purposes only.
 #'
 #' @keywords internal
 "_PACKAGE"
